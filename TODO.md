@@ -41,27 +41,25 @@ Each milestone must work and pass its acceptance tests before the next begins.
 - [x] `algorithms/cellular_automata.py` — fire spread + plant growth
 - [x] Acceptance: BFS/DFS/A* find correct paths around obstacles (20 tests)
 
-## MILESTONE 6 — Simulation engine
-- [ ] `engine/simulation.py` — tick loop, statistics
-- [ ] `engine/event_manager.py` — simulation event queue
-- [ ] `entities/base_entity.py` — Entity base class
-- [ ] `entities/plant.py` — growth, regeneration, food value
-- [ ] Resource management
-- [ ] Acceptance: tick advances plant state deterministically
+## MILESTONE 6 — Simulation engine  ✅ COMPLETE (PR #3)
+- [x] `engine/simulation.py` — deterministic tick loop, statistics
+- [x] `engine/event_manager.py` — simulation event queue (priority + FIFO)
+- [x] `engine/entities.py` — Entity base class + Plant (growth, food value)
+- [x] Resource management (energy, growth stages)
+- [x] Acceptance: tick advances plant state deterministically (13 tests)
 
-## MILESTONE 7 — Living organisms
-- [ ] `entities/herbivore.py` — seek food, move (A*), eat, energy, flee
-- [ ] `entities/predator.py` — chase, hunt, consume, energy
-- [ ] Death and reproduction conditions
-- [ ] `entities/entity_registry.py` — hash-table-backed lookup
-- [ ] Acceptance: herbivores eat and lose energy; predators hunt
+## MILESTONE 7 — Living organisms  ✅ COMPLETE (PR #4)
+- [x] `engine/organisms.py` — Herbivore (seek food, flee, energy) + Predator (chase, hunt, consume, energy)
+- [x] Death conditions (starvation)
+- [x] `engine/organisms.py` EntityRegistry — hash-table-backed typed lookups
+- [x] Acceptance: herbivores eat and lose energy; predators hunt (9 tests)
 
-## MILESTONE 8 — AI behaviour
-- [ ] `ai/state_machine.py` — FSM states and transitions
-- [ ] `ai/utility_ai.py` — utility scoring for action selection
-- [ ] Predator avoidance and intelligent food searching
-- [ ] Inspector displays decision reasoning and per-action scores
-- [ ] Acceptance: organism switches states and inspector shows computed scores
+## MILESTONE 8 — AI behaviour  ✅ COMPLETE (PR #4)
+- [x] `ai/behaviour.py` — FSM (states, transitions, enter/update/exit hooks)
+- [x] `ai/behaviour.py` — UtilityAI (product/sum combiner, scorers)
+- [x] `ai/organisms.py` — HerbivoreAI / PredatorAI utility-based controllers
+- [x] Predator avoidance and intelligent food searching via utility scoring
+- [x] Acceptance: organisms switch actions and scorers are inspectable (5 tests)
 
 ## MILESTONE 9 — Analytics and DSA laboratory
 - [ ] `ui/analytics_panel.py` — population charts (matplotlib)
