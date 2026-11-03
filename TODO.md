@@ -2,21 +2,21 @@
 
 Each milestone must work and pass its acceptance tests before the next begins.
 
-## MILESTONE 1 — Project foundation  ✅ IN PROGRESS
+## MILESTONE 1 — Project foundation  ✅ COMPLETE
 - [x] Repository initialised on GitHub (public, default branch `main`)
 - [x] Directory structure created
 - [x] `.gitignore`, `requirements.txt`, `README.md`, `TODO.md`
-- [ ] `config.py` — constants, terrain properties, palette
-- [ ] `ui/theme.py` — dark theme + stylesheet
-- [ ] `ui/main_window.py` — main window skeleton with nav bar
-- [ ] `app.py` — entry point
-- [ ] Smoke test: application launches a window
+- [x] `config.py` — constants, terrain properties, palette
+- [x] `ui/theme.py` — dark theme + stylesheet
+- [x] `ui/main_window.py` — main window skeleton with nav bar
+- [x] `app.py` — entry point
+- [x] Smoke test: application launches a window (offscreen)
 
-## MILESTONE 2 — World canvas
-- [ ] `engine/world.py` — grid 2D array, terrain types, coordinate system
-- [ ] `ui/canvas.py` — QGraphicsView pixel-art renderer, zoom, pan, grid toggle
-- [ ] Terrain rendering with sharp pixels (nearest-neighbour scaling)
-- [ ] Acceptance: terrain renders correctly at multiple zoom levels
+## MILESTONE 2 — World canvas  ✅ COMPLETE (PR #1)
+- [x] `engine/world.py` — grid 2D array, terrain types, coordinate system
+- [x] `ui/canvas.py` — QGraphicsView pixel-art renderer, zoom, pan, grid toggle
+- [x] Terrain rendering with sharp pixels (nearest-neighbour scaling)
+- [x] Acceptance: terrain renders correctly at multiple zoom levels (256 tiles, zoom in/out verified)
 
 ## MILESTONE 3 — World editing
 - [ ] `ui/toolbar.py` — left vertical tool palette (select, terrain, eraser, fill, water, plant, animal, object, inspect)
