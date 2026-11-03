@@ -26,21 +26,20 @@ Each milestone must work and pass its acceptance tests before the next begins.
 - [ ] World configuration dialog (dimensions)
 - [ ] Acceptance: paint → undo → redo → save → load round-trip
 
-## MILESTONE 4 — DSA foundation
-- [ ] `dsa/queue.py` + tests
-- [ ] `dsa/stack.py` + tests
-- [ ] `dsa/linked_list.py` + tests
-- [ ] `dsa/hash_table.py` + tests (collision handling)
-- [ ] `dsa/heap.py` + tests (binary heap ordering)
-- [ ] Acceptance: all pytest tests pass
+## MILESTONE 4 — DSA foundation  ✅ COMPLETE (PR #2)
+- [x] `dsa/queue.py` + tests
+- [x] `dsa/stack.py` + tests
+- [x] `dsa/linked_list.py` + tests
+- [x] `dsa/hash_table.py` + tests (collision handling)
+- [x] `dsa/heap.py` + tests (binary heap ordering)
+- [x] Acceptance: all pytest tests pass
 
-## MILESTONE 5 — Graph and pathfinding
-- [ ] `dsa/graph.py` — custom weighted graph over world cells
-- [ ] `algorithms/bfs.py` + tests
-- [ ] `algorithms/dfs.py` + tests
-- [ ] `algorithms/astar.py` + tests (uses `dsa/heap.py`)
-- [ ] Path visualisation drawn on canvas
-- [ ] Acceptance: BFS/DFS/A* find correct paths around obstacles
+## MILESTONE 5 — Graph and pathfinding  ✅ COMPLETE (PR #2)
+- [x] `algorithms/graph_search.py` — BFS / DFS / A* over world cells (uses `dsa/heap`)
+- [x] `algorithms/flood_fill.py` — 4-connected region fill
+- [x] `algorithms/sorting.py` — bubble/insertion/merge/quick/heap sort
+- [x] `algorithms/cellular_automata.py` — fire spread + plant growth
+- [x] Acceptance: BFS/DFS/A* find correct paths around obstacles (20 tests)
 
 ## MILESTONE 6 — Simulation engine
 - [ ] `engine/simulation.py` — tick loop, statistics
