@@ -1,0 +1,16 @@
+# PIXELVERSE dependencies
+# Python 3.11 or newer is required.
+
+# Desktop GUI framework
+PySide6>=6.5
+
+# Charting and analytics
+matplotlib>=3.7
+numpy>=1.24
+pillow>=9.0
+
+# Testing
+pytest>=7.0
+
+# SQLite is part of the Python standard library (no install needed).
+# JSON is part of the Python standard library (no install needed).
