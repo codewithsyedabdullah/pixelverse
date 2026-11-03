@@ -1,0 +1,2 @@
+# Normalize line endings across the repo so diffs stay clean.
+* text=auto eol=lf
