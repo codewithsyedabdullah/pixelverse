@@ -22,6 +22,7 @@ from dsa.queue import Queue
 from engine.entities import Entity, Plant
 from engine.event_manager import Event, EventManager
 from engine.world import World
+from engine.clock import Clock
 from algorithms.cellular_automata import FireSpreadRule, PlantGrowthRule
 
 
@@ -60,6 +61,7 @@ class Simulation:
         self.stats_history: List[SimulationStats] = []
         self.fire_rule = FireSpreadRule()
         self.plant_rule = PlantGrowthRule(spread=0.25)
+        self.clock = Clock(seed=rng_seed if rng_seed is not None else 0)
         # Terrain grid used by cellular rules (separate from the world terrain
         # so fire can spread over walkable cells).
         self._ca_grid: List[List[str]] = [
@@ -106,7 +108,11 @@ class Simulation:
             if entity.alive:
                 entity.update(self.world, self.event_manager, self.tick)
 
-        # 3. Cellular automaton rules.
+        # 3. Environmental clock + weather.
+        self.clock.advance(1)
+        self.clock.update_weather()
+
+        # 4. Cellular automaton rules.
         self._ca_grid = self.plant_rule.step(self._ca_grid)
         self._ca_grid = self.fire_rule.step(self._ca_grid)
 
@@ -156,6 +162,7 @@ class Simulation:
         self.entities = HashTable()
         self._next_id = 1
         self.stats_history = []
+        self.clock = Clock(seed=self.clock._seed)
         self._ca_grid = [
             [self.world.get_terrain(c, r) for c in range(self.world.width)]
             for r in range(self.world.height)

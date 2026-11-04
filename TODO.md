@@ -61,23 +61,23 @@ Each milestone must work and pass its acceptance tests before the next begins.
 - [x] Predator avoidance and intelligent food searching via utility scoring
 - [x] Acceptance: organisms switch actions and scorers are inspectable (5 tests)
 
-## MILESTONE 9 — Analytics and DSA laboratory
-- [ ] `ui/analytics_panel.py` — population charts (matplotlib)
-- [ ] `ui/dsa_lab.py` — live visualisation of queue/heap/stack/frontier/visited
-- [ ] `ui/simulation_controls.py` — run/pause/step/reset/speed
-- [ ] Acceptance: charts show live data; DSA lab updates during pathfinding
+## MILESTONE 9 — Analytics and DSA laboratory  ✅ COMPLETE (PR #5)
+- [x] `ui/analytics_panel.py` — population charts (matplotlib FigureCanvas)
+- [x] `ui/dsa_lab.py` — live visualisation of queue/stack/heap/hash-table/linked-list demos
+- [x] `ui/simulation_controls.py` — run/pause/step/reset/speed slider
+- [x] Acceptance: charts show live data; DSA lab updates during pathfinding (7 tests)
 
-## MILESTONE 10 — Environmental simulation
-- [ ] `engine/clock.py` — day/night, weather, seasons
-- [ ] `algorithms/cellular_automata.py` — fire spread, plant growth
-- [ ] Environmental mechanics affect the simulation
-- [ ] Acceptance: day/night cycle advances; fire spreads to combustible cells
+## MILESTONE 10 — Environmental simulation  ✅ COMPLETE (PR #6)
+- [x] `engine/clock.py` — day/night, weather, seasons (deterministic, seeded)
+- [x] `algorithms/cellular_automata.py` — fire spread, plant growth (already M5)
+- [x] Environmental mechanics wired into the simulation tick loop
+- [x] Acceptance: day/night cycle advances; fire spreads to combustible cells (11 tests)
 
-## MILESTONE 11 — Persistence and Q-learning
-- [ ] `storage/database.py` — SQLite snapshots
-- [ ] `ai/q_learning.py` — optional adaptive behaviour
-- [ ] Reproducible random seeds / deterministic mode
-- [ ] Acceptance: same seed → same outcome; snapshots save/load
+## MILESTONE 11 — Persistence and Q-learning  ✅ COMPLETE (PR #7)
+- [x] `storage/database.py` — SQLite snapshots (save/load/delete/list/clear)
+- [x] `ai/q_learning.py` — optional adaptive behaviour (tabular Q-learner on `dsa/hash_table`)
+- [x] Reproducible random seeds / deterministic mode (simulation + clock)
+- [x] Acceptance: same seed → same outcome; snapshots save/load (5 db tests + 9 Q-learning tests)
 
 ## MILESTONE 12 — Final polish
 - [ ] Integration testing across all modules
