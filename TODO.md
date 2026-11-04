@@ -1,90 +1,28 @@
 # PIXELVERSE — Development Roadmap
 
-Each milestone must work and pass its acceptance tests before the next begins.
+All prior milestone work (DSA, algorithms, simulation, AI, clock, persistence,
+UI panels) is merged to `main` via PRs #1–#7.  Remaining work is grouped into
+three milestones.
 
-## MILESTONE 1 — Project foundation  ✅ COMPLETE
-- [x] Repository initialised on GitHub (public, default branch `main`)
-- [x] Directory structure created
-- [x] `.gitignore`, `requirements.txt`, `README.md`, `TODO.md`
-- [x] `config.py` — constants, terrain properties, palette
-- [x] `ui/theme.py` — dark theme + stylesheet
-- [x] `ui/main_window.py` — main window skeleton with nav bar
-- [x] `app.py` — entry point
-- [x] Smoke test: application launches a window (offscreen)
-
-## MILESTONE 2 — World canvas  ✅ COMPLETE (PR #1)
-- [x] `engine/world.py` — grid 2D array, terrain types, coordinate system
-- [x] `ui/canvas.py` — QGraphicsView pixel-art renderer, zoom, pan, grid toggle
-- [x] Terrain rendering with sharp pixels (nearest-neighbour scaling)
-- [x] Acceptance: terrain renders correctly at multiple zoom levels (256 tiles, zoom in/out verified)
-
-## MILESTONE 3 — World editing
+## MILESTONE A — World editing + toolbar  (NOT STARTED)
 - [ ] `ui/toolbar.py` — left vertical tool palette (select, terrain, eraser, fill, water, plant, animal, object, inspect)
 - [ ] Terrain painting on canvas + eraser + selection
-- [ ] `engine/commands.py` + `dsa/stack.py` — undo/redo
+- [ ] `engine/commands.py` + `dsa/stack.py` — undo/redo command pattern
 - [ ] `storage/serializer.py` — JSON save/load
 - [ ] World configuration dialog (dimensions)
 - [ ] Acceptance: paint → undo → redo → save → load round-trip
 
-## MILESTONE 4 — DSA foundation  ✅ COMPLETE (PR #2)
-- [x] `dsa/queue.py` + tests
-- [x] `dsa/stack.py` + tests
-- [x] `dsa/linked_list.py` + tests
-- [x] `dsa/hash_table.py` + tests (collision handling)
-- [x] `dsa/heap.py` + tests (binary heap ordering)
-- [x] Acceptance: all pytest tests pass
+## MILESTONE B — Inspector + integration  (NOT STARTED)
+- [ ] `ui/inspector.py` — entity detail panel with decision reasoning + per-action scores
+- [ ] Wire `app.py` / `main_window.py` to the canvas, panels, and simulation controls
+- [ ] Demo scenarios / scenario loader
+- [ ] Acceptance: app launches clean; clicking an entity shows its utility scores
 
-## MILESTONE 5 — Graph and pathfinding  ✅ COMPLETE (PR #2)
-- [x] `algorithms/graph_search.py` — BFS / DFS / A* over world cells (uses `dsa/heap`)
-- [x] `algorithms/flood_fill.py` — 4-connected region fill
-- [x] `algorithms/sorting.py` — bubble/insertion/merge/quick/heap sort
-- [x] `algorithms/cellular_automata.py` — fire spread + plant growth
-- [x] Acceptance: BFS/DFS/A* find correct paths around obstacles (20 tests)
-
-## MILESTONE 6 — Simulation engine  ✅ COMPLETE (PR #3)
-- [x] `engine/simulation.py` — deterministic tick loop, statistics
-- [x] `engine/event_manager.py` — simulation event queue (priority + FIFO)
-- [x] `engine/entities.py` — Entity base class + Plant (growth, food value)
-- [x] Resource management (energy, growth stages)
-- [x] Acceptance: tick advances plant state deterministically (13 tests)
-
-## MILESTONE 7 — Living organisms  ✅ COMPLETE (PR #4)
-- [x] `engine/organisms.py` — Herbivore (seek food, flee, energy) + Predator (chase, hunt, consume, energy)
-- [x] Death conditions (starvation)
-- [x] `engine/organisms.py` EntityRegistry — hash-table-backed typed lookups
-- [x] Acceptance: herbivores eat and lose energy; predators hunt (9 tests)
-
-## MILESTONE 8 — AI behaviour  ✅ COMPLETE (PR #4)
-- [x] `ai/behaviour.py` — FSM (states, transitions, enter/update/exit hooks)
-- [x] `ai/behaviour.py` — UtilityAI (product/sum combiner, scorers)
-- [x] `ai/organisms.py` — HerbivoreAI / PredatorAI utility-based controllers
-- [x] Predator avoidance and intelligent food searching via utility scoring
-- [x] Acceptance: organisms switch actions and scorers are inspectable (5 tests)
-
-## MILESTONE 9 — Analytics and DSA laboratory  ✅ COMPLETE (PR #5)
-- [x] `ui/analytics_panel.py` — population charts (matplotlib FigureCanvas)
-- [x] `ui/dsa_lab.py` — live visualisation of queue/stack/heap/hash-table/linked-list demos
-- [x] `ui/simulation_controls.py` — run/pause/step/reset/speed slider
-- [x] Acceptance: charts show live data; DSA lab updates during pathfinding (7 tests)
-
-## MILESTONE 10 — Environmental simulation  ✅ COMPLETE (PR #6)
-- [x] `engine/clock.py` — day/night, weather, seasons (deterministic, seeded)
-- [x] `algorithms/cellular_automata.py` — fire spread, plant growth (already M5)
-- [x] Environmental mechanics wired into the simulation tick loop
-- [x] Acceptance: day/night cycle advances; fire spreads to combustible cells (11 tests)
-
-## MILESTONE 11 — Persistence and Q-learning  ✅ COMPLETE (PR #7)
-- [x] `storage/database.py` — SQLite snapshots (save/load/delete/list/clear)
-- [x] `ai/q_learning.py` — optional adaptive behaviour (tabular Q-learner on `dsa/hash_table`)
-- [x] Reproducible random seeds / deterministic mode (simulation + clock)
-- [x] Acceptance: same seed → same outcome; snapshots save/load (5 db tests + 9 Q-learning tests)
-
-## MILESTONE 12 — Final polish
-- [ ] Integration testing across all modules
-- [ ] Bug fixes and performance profiling
-- [ ] Demo scenarios
-- [ ] Documentation: `docs/ARCHITECTURE.md`, `DSA_MAPPING.md`, `AI_EXPLANATION.md`, `USER_GUIDE.md`, `COMPLEXITY.md`
-- [ ] README and TODO finalised
+## MILESTONE C — Polish + docs  (NOT STARTED)
+- [ ] `docs/ARCHITECTURE.md`, `docs/DSA_MAPPING.md`, `docs/AI_EXPLANATION.md`
+- [ ] `docs/USER_GUIDE.md`, `docs/COMPLEXITY.md`
+- [ ] README finalised; TODO finalised
+- [ ] Performance profiling + bug sweep
 - [ ] Acceptance: MVP checklist complete, all tests pass, app runs clean
 
 ---
