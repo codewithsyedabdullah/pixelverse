@@ -26,40 +26,72 @@ Read it before opening your first branch.
 6. **Commit dates must spread out.** Use `git commit --date="..."` so the
    history looks like steady part-time work over the month, not one burst.
 
-## Milestone ownership
+## Your milestone
 
-| Milestone | Owner | What you build |
-|-----------|-------|----------------|
-| **M2** World canvas | **A** | `engine/world.py`, `ui/canvas.py` |
-| **M3** World editing | **A** | `ui/toolbar.py`, `engine/commands.py`, `storage/serializer.py` |
-| **M4** DSA foundation | **B** | `dsa/stack.py`, `dsa/queue.py`, `dsa/linked_list.py` |
-| **M5** DSA foundation (cont.) | **B** | `dsa/hash_table.py`, `dsa/heap.py` |
-| **M6** Simulation engine | **C** | `engine/simulation.py`, `engine/event_manager.py`, `engine/entities.py` |
-| **M7** Living organisms | **C** | `engine/organisms.py` (Herbivore, Predator) |
-| **M8** AI behaviour | **C** | `ai/state_machine.py`, `ai/utility_ai.py` |
-| **M9** Analytics + DSA lab | **You** | `ui/analytics_panel.py`, `ui/dsa_lab.py`, `ui/simulation_controls.py` |
-| **M10** Environmental sim | **You** | `engine/clock.py`, cellular automata wiring |
-| **M11** Persistence + Q-learning | **You** | `storage/database.py`, `ai/q_learning.py` |
-| **M12** Final polish | **You** | Docs, integration testing, demo scenarios |
+Find your name below and build only those modules. Don't touch other
+peoples files unless they ask.
 
-## Why this split
+### Teammate A — World + Canvas (M2, M3)
 
-The academic brief marks you on two things:
+You build the visible shell that makes the simulation look like a real app.
 
-1. **From-scratch data structures** (M4, M5 — Person B). You must prove you
-   built a hash table, a heap, and A* yourself, not `import collections`.
-   Every structure needs pytest coverage.
+| Milestone | Modules to create |
+|-----------|-------------------|
+| **M2** | `engine/world.py` (grid, terrain, coordinate system), `ui/canvas.py` (QGraphicsView renderer, zoom, pan, grid toggle) |
+| **M3** | `ui/toolbar.py` (left tool palette), `engine/commands.py` + `dsa/stack.py` (undo/redo), `storage/serializer.py` (JSON save/load) |
 
-2. **Living organisms that make decisions** (M6, M7, M8 — Person C). The
-   organisms must use a finite state machine and utility-based AI, and the
-   inspector must show the computed scores. This is the demo that sells the
-   project.
+**Acceptance:** terrain renders at multiple zoom levels; paint → undo →
+redo → save → load round-trips.
 
-Person A builds the visible shell (canvas, toolbar, undo/redo) that makes
-the other two look like a real app.
+### Teammate B — DSA + Pathfinding (M4, M5)
 
-You own the glue (analytics, DSA lab, clock, persistence, docs) and the
-final integration so all three parts work as one application.
+You own the from-scratch data structures. This is the academic core — the
+teacher specifically checks that these are NOT imported from the standard
+library.
+
+| Milestone | Modules to create |
+|-----------|-------------------|
+| **M4** | `dsa/stack.py`, `dsa/queue.py`, `dsa/linked_list.py` |
+| **M5** | `dsa/hash_table.py` (collision handling, auto-resize), `dsa/heap.py` (binary heap, stable tie-breaking) |
+
+**Also in M5:** `algorithms/sorting.py` (bubble/insertion/merge/quick/heap),
+`algorithms/flood_fill.py` (4-connected paint bucket),
+`algorithms/graph_search.py` (BFS, DFS, A* — A* must use `dsa/heap`).
+
+**Acceptance:** every structure has pytest coverage; BFS/DFS/A* find
+correct paths around obstacles.
+
+### Teammate C — Simulation + AI (M6, M7, M8)
+
+You own the living ecosystem and the decision-making. This is the second
+academic core — the teacher wants to see organisms that actually think.
+
+| Milestone | Modules to create |
+|-----------|-------------------|
+| **M6** | `engine/simulation.py` (deterministic tick loop, statistics), `engine/event_manager.py` (event queue on `dsa/queue`), `engine/entities.py` (Entity base + Plant) |
+| **M7** | `engine/organisms.py` (Herbivore: seek food, flee, energy; Predator: chase, hunt, consume, energy), `engine/entity_registry.py` (hash-table-backed lookup) |
+| **M8** | `ai/state_machine.py` (FSM: states, transitions, enter/update/exit hooks), `ai/utility_ai.py` (utility scoring for action selection) |
+
+**Acceptance:** tick advances plant state deterministically; herbivores eat
+and lose energy; predators hunt; organisms switch states based on computed
+utility scores.
+
+### Teammate D — Integration + Docs (M9, M10, M11, M12)
+
+You own the pieces that tie everything together and the documentation that
+explains why it matters.
+
+| Milestone | Modules to create |
+|-----------|-------------------|
+| **M9** | `ui/analytics_panel.py` (population charts via matplotlib), `ui/dsa_lab.py` (live visualisation of queue/stack/heap/hash-table/linked-list), `ui/simulation_controls.py` (run/pause/step/reset/speed) |
+| **M10** | `engine/clock.py` (day/night, weather, seasons — deterministic, seeded); wire cellular automata into the tick loop |
+| **M11** | `storage/database.py` (SQLite snapshots: save/load/delete/list/clear), `ai/q_learning.py` (optional tabular Q-learner on `dsa/hash_table`) |
+| **M12** | `docs/ARCHITECTURE.md`, `docs/DSA_MAPPING.md`, `docs/AI_EXPLANATION.md`, `docs/USER_GUIDE.md`, `docs/COMPLEXITY.md`; integration testing; demo scenarios; final polish |
+
+**Acceptance:** charts show live data; DSA lab updates during pathfinding;
+day/night cycle advances; fire spreads to combustible cells; same seed →
+same outcome; snapshots save/load; app launches clean with all tests
+passing.
 
 ## What the teacher checks
 
@@ -70,6 +102,8 @@ final integration so all three parts work as one application.
 - `docs/` — architecture, DSA mapping, AI explanation, user guide, complexity
 
 ## Branch naming
+
+Use the branch name for your milestone:
 
 ```
 milestone/M2-canvas
@@ -84,3 +118,16 @@ milestone/M10-environment
 milestone/M11-persistence
 milestone/M12-polish
 ```
+
+## Commit convention
+
+```
+feat:  <new feature>
+style: <UI / visual change>
+fix:   <bug fix>
+test:  <added or updated tests>
+docs:  <documentation change>
+chore: <maintenance>
+```
+
+Every commit must represent genuine progress. No backdating, no empty commits.
