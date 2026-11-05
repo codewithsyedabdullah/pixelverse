@@ -69,7 +69,7 @@ academic core — the teacher wants to see organisms that actually think.
 and lose energy; predators hunt; organisms switch states based on computed
 utility scores.
 
-### You — Integration + Docs (M9, M10, M11, M12)
+### Teammate D — Integration + Docs (M9, M10, M11, M12)
 
 You own the pieces that tie everything together and the documentation that
 explains why it matters.
