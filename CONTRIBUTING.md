@@ -16,14 +16,7 @@ Read it before opening your first branch.
    $env:QT_QPA_PLATFORM="offscreen"; python -m pytest tests/ -q
    ```
 
-5. **Use the git binary explicitly** — the default `git` on this machine is
-   broken for pushes:
-
-   ```
-   & "C:\Program Files\Git\cmd\git.exe" -C "E:\PIXELVERSE" push -u origin <branch>
-   ```
-
-6. **Commit dates must spread out.** Use `git commit --date="..."` so the
+5. **Commit dates must spread out.** Use `git commit --date="..."` so the
    history looks like steady part-time work over the month, not one burst.
 
 ## Your milestone
@@ -76,7 +69,7 @@ academic core — the teacher wants to see organisms that actually think.
 and lose energy; predators hunt; organisms switch states based on computed
 utility scores.
 
-### Teammate D — Integration + Docs (M9, M10, M11, M12)
+### You — Integration + Docs (M9, M10, M11, M12)
 
 You own the pieces that tie everything together and the documentation that
 explains why it matters.
