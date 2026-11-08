@@ -1,10 +1,9 @@
 # PIXELVERSE — Development Roadmap
 
-Repo reset to the M1 scaffold on 2026-11-04 so the 3-person team can
-distribute the work over the remaining weeks.  Nobody pushes to `main`
-directly — work on a `milestone/<name>` branch and open a PR.
+Nobody pushes to `main` directly — work on a `milestone/<name>` branch
+and open a PR.  One milestone per PR.
 
-## MILESTONE 1 — Project foundation  ✅ COMPLETE (committed `b0ee154`)
+## MILESTONE 1 — Project foundation  ✅ COMPLETE (`b0ee154`)
 - [x] Repository initialised on GitHub (public, default branch `main`)
 - [x] Directory structure created
 - [x] `.gitignore`, `requirements.txt`, `README.md`, `TODO.md`
@@ -13,6 +12,14 @@ directly — work on a `milestone/<name>` branch and open a PR.
 - [x] `ui/main_window.py` — main window skeleton with nav bar
 - [x] `app.py` — entry point
 - [x] Smoke test: application launches a window (offscreen)
+
+## MILESTONE 4 — DSA foundation  ✅ COMPLETE (PR #6, merged `ea154bb`)
+- [x] `dsa/stack.py` — LIFO stack, backed by `dsa/linked_list.LinkedList`
+- [x] `dsa/queue.py` — FIFO queue, backed by `dsa/linked_list.LinkedList`
+- [x] `dsa/linked_list.py` — singly linked list, O(1) append/prepend
+- [x] `dsa/hash_table.py` — separate-chaining hash map with auto-resize
+- [x] `dsa/heap.py` — binary min-heap with stable tie-breaking
+- [x] 55 pytest cases covering every structure
 
 ## MILESTONE 2 — World canvas  (NOT STARTED)
 - [ ] `engine/world.py` — grid 2D array, terrain types, coordinate system
@@ -28,25 +35,16 @@ directly — work on a `milestone/<name>` branch and open a PR.
 - [ ] World configuration dialog (dimensions)
 - [ ] Acceptance: paint → undo → redo → save → load round-trip
 
-## MILESTONE 4 — DSA foundation  (NOT STARTED)
-- [ ] `dsa/queue.py` + tests
-- [ ] `dsa/stack.py` + tests
-- [ ] `dsa/linked_list.py` + tests
-- [ ] `dsa/hash_table.py` + tests (collision handling)
-- [ ] `dsa/heap.py` + tests (binary heap ordering)
-- [ ] Acceptance: all pytest tests pass
-
 ## MILESTONE 5 — Graph and pathfinding  (NOT STARTED)
-- [ ] `dsa/graph.py` — custom weighted graph over world cells
-- [ ] `algorithms/bfs.py` + tests
-- [ ] `algorithms/dfs.py` + tests
-- [ ] `algorithms/astar.py` + tests (uses `dsa/heap.py`)
+- [ ] `algorithms/sorting.py` — bubble/insertion/merge/quick/heap sort
+- [ ] `algorithms/flood_fill.py` — 4-connected paint bucket
+- [ ] `algorithms/graph_search.py` — BFS, DFS, A* (A* must use `dsa/heap`)
 - [ ] Path visualisation drawn on canvas
 - [ ] Acceptance: BFS/DFS/A* find correct paths around obstacles
 
 ## MILESTONE 6 — Simulation engine  (NOT STARTED)
 - [ ] `engine/simulation.py` — tick loop, statistics
-- [ ] `engine/event_manager.py` — simulation event queue
+- [ ] `engine/event_manager.py` — simulation event queue on `dsa/queue`
 - [ ] `engine/entities.py` — Entity base class + Plant
 - [ ] Resource management
 - [ ] Acceptance: tick advances plant state deterministically
@@ -92,14 +90,13 @@ directly — work on a `milestone/<name>` branch and open a PR.
 
 ---
 
-## Suggested team split
+## Team split (3 people)
 
-| Person | Milestones | Notes |
-|--------|-----------|-------|
-| **Teammate A** | M2, M3 | World canvas + editing toolbar + undo/redo |
-| **Teammate B** | M4, M5 | DSA structures + graph search + pathfinding |
-| **Teammate C** | M6, M7, M8 | Simulation engine + organisms + AI behaviour |
-| **You** | M9, M10, M11, M12 | Analytics panel, DSA lab, clock, persistence, Q-learning, docs, polish |
+| Person | Milestones | Owns |
+|--------|-----------|------|
+| **A** | M2, M3, M4, M5 | Canvas, editing, all DSA structures, sorting, flood fill, BFS/DFS/A* |
+| **B** | M6, M7, M8, M9 | Simulation engine, organisms, FSM + utility AI, analytics + DSA lab |
+| **C** | M10, M11, M12 | Clock/weather/seasons, SQLite + Q-learning, all docs, final polish |
 
 ## Commit convention
 

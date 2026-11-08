@@ -15,12 +15,14 @@ import sys
 from PySide6.QtWidgets import QApplication
 
 from ui.main_window import MainWindow
+from ui.theme import apply_theme
 
 
 def main() -> int:
     """Create the application, open the main window and run the event loop."""
     # Qt uses sys.argv; allow future command-line options here.
     app = QApplication(sys.argv)
+    apply_theme(app)
 
     window = MainWindow()
     window.show()

@@ -34,8 +34,8 @@ standard library.
 |-----------|-------------------|
 | **M2** | `engine/world.py` (grid, terrain, coordinate system), `ui/canvas.py` (QGraphicsView renderer, zoom, pan, grid toggle) |
 | **M3** | `ui/toolbar.py` (left tool palette), `engine/commands.py` + `dsa/stack.py` (undo/redo), `storage/serializer.py` (JSON save/load) |
-| **M4** | `dsa/stack.py`, `dsa/queue.py`, `dsa/linked_list.py` |
-| **M5** | `dsa/hash_table.py` (collision handling, auto-resize), `dsa/heap.py` (binary heap, stable tie-breaking), `algorithms/sorting.py` (bubble/insertion/merge/quick/heap), `algorithms/flood_fill.py` (4-connected paint bucket), `algorithms/graph_search.py` (BFS, DFS, A* — A* must use `dsa/heap`) |
+| **M4** | `dsa/stack.py`, `dsa/queue.py`, `dsa/linked_list.py` — **DONE (PR #6, merged)** |
+| **M5** | `algorithms/sorting.py` (bubble/insertion/merge/quick/heap sort), `algorithms/flood_fill.py` (4-connected paint bucket), `algorithms/graph_search.py` (BFS, DFS, A* — A* must use `dsa/heap`), path visualisation on canvas |
 
 **Acceptance:** terrain renders at multiple zoom levels; paint → undo →
 redo → save → load round-trips; every DSA structure has pytest coverage;

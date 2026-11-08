@@ -13,7 +13,6 @@ from __future__ import annotations
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
-    QApplication,
     QMainWindow,
     QWidget,
     QLabel,
@@ -23,7 +22,6 @@ from PySide6.QtWidgets import (
 )
 
 from config import APP_NAME, APP_VERSION, Palette
-from ui.theme import apply_theme
 
 
 class MainWindow(QMainWindow):
@@ -32,7 +30,6 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self._setup_window()
-        self._setup_theme()
         self._setup_nav_bar()
         self._setup_central_area()
         self._setup_status_bar()
@@ -43,10 +40,6 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(f"{APP_NAME} v{APP_VERSION}")
         self.resize(1280, 820)
         self.setMinimumSize(960, 640)
-
-    def _setup_theme(self) -> None:
-        """Apply the dark palette and stylesheet."""
-        apply_theme(QApplication.instance())
 
     def _setup_nav_bar(self) -> None:
         """Build the top navigation bar with logo, world name and actions.

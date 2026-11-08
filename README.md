@@ -37,14 +37,11 @@ The academic focus is **DSA + AI**. The simulation is legitimately built on cust
 | Data structure | File | Used for |
 |---|---|---|
 | 2D Array | `engine/world.py` | World grid |
-| Graph | `dsa/graph.py` | Traversable cells and weighted movement costs |
 | Queue | `dsa/queue.py` | BFS frontier, event processing |
 | Stack | `dsa/stack.py` | Undo/redo, DFS |
 | Binary Heap | `dsa/heap.py` | A* open set, event scheduling |
 | Hash Table | `dsa/hash_table.py` | Entity lookup (custom collision handling) |
-| Linked List | `dsa/linked_list.py` | Simulation event history |
-| Tree | `dsa/tree.py` | Entity hierarchy / behaviour representation |
-| Trie | `dsa/trie.py` | Optional tool/command prefix search |
+| Linked List | `dsa/linked_list.py` | Backing container for queue/stack |
 
 ## Custom Algorithms
 
