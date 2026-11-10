@@ -55,6 +55,8 @@ class WorldCanvas(QGraphicsView):
         self._selected_cell: tuple[int, int] | None = None
         self._panning = False
         self._last_mouse = QPoint()
+        self._active_tool = "select"
+        self._brush_terrain = "grass"
 
         self.setRenderHint(QPainter.Antialiasing, False)
         self.setDragMode(QGraphicsView.ScrollHandDrag)
@@ -129,6 +131,15 @@ class WorldCanvas(QGraphicsView):
             self._last_mouse = event.position().toPoint()
             self.setCursor(Qt.ClosedHandCursor)
             event.accept()
+        elif event.button() == Qt.LeftButton and self._world is not None:
+            cell = self.cell_at(event.position().toPoint())
+            if cell is not None and self._active_tool in (
+                "terrain", "eraser", "water", "plant", "animal", "object"
+            ):
+                self.paint_at(cell[0], cell[1])
+                event.accept()
+                return
+            super().mousePressEvent(event)
         else:
             super().mousePressEvent(event)
 
@@ -153,3 +164,51 @@ class WorldCanvas(QGraphicsView):
             event.accept()
         else:
             super().mouseMoveEvent(event)
+
+    # ------------------------------------------------------------------ editing
+    def cell_at(self, pos: QPoint) -> tuple[int, int] | None:
+        """Return the (col, row) of the world cell under *pos*, or None."""
+        if self._world is None:
+            return None
+        size = TILE_SIZE * self._zoom
+        col = int(pos.x() / size)
+        row = int(pos.y() / size)
+        if 0 <= col < self._world.width and 0 <= row < self._world.height:
+            return (col, row)
+        return None
+
+    def set_active_tool(self, tool: str) -> None:
+        self._active_tool = tool
+
+    def set_brush_terrain(self, terrain: str) -> None:
+        self._brush_terrain = terrain
+
+    def _tool_brush(self) -> str:
+        """Map the active tool to a terrain brush."""
+        if self._active_tool == "eraser":
+            return "grass"
+        if self._active_tool == "water":
+            return "water"
+        if self._active_tool == "plant":
+            return "grass"  # plants are entities; terrain stays grass
+        if self._active_tool == "animal":
+            return "grass"
+        if self._active_tool == "object":
+            return "grass"
+        return self._brush_terrain
+
+    def paint_at(self, col: int, row: int) -> None:
+        """Paint a single cell with the current brush terrain."""
+        if self._world is None:
+            return
+        if not (0 <= col < self._world.width and 0 <= row < self._world.height):
+            return
+        terrain = getattr(self, "_brush_terrain", None)
+        if terrain is None:
+            return
+        self._world.set_terrain(col, row, terrain)
+        item = self._tile_items.get((col, row))
+        if item is not None:
+            from config import TERRAIN_PROPERTIES
+            item.color = TERRAIN_PROPERTIES[terrain]["color"]
+            item.update()
