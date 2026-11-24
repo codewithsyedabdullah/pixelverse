@@ -1,4 +1,12 @@
 
+"""Cellular automata — fire spread and plant growth on a terrain grid.
+
+Both functions are pure (they return a new grid and never mutate the input)
+and deterministic (seeded RNG).
+"""
+
+from __future__ import annotations
+
 import random
 
 from config import TerrainType

@@ -1,4 +1,11 @@
 
+"""Simulation clock — day/night cycle, weather, and seasons.
+
+Deterministic: the clock advances by tick count, no RNG.
+"""
+
+from __future__ import annotations
+
 from dataclasses import dataclass
 
 
