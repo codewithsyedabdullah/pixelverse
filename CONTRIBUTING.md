@@ -32,9 +32,9 @@ standard library.
 
 | Milestone | Modules to create |
 |-----------|-------------------|
-| **M2** | `engine/world.py` (grid, terrain, coordinate system), `ui/canvas.py` (QGraphicsView renderer, zoom, pan, grid toggle) |
+| **M2** | `engine/world.py` (grid, terrain, coordinate system), `ui/canvas.py` (QGraphicsView renderer, zoom, pan, grid toggle) — **DONE (PR #8, merged)** |
 | **M3** | `ui/toolbar.py` (left tool palette), `engine/commands.py` + `dsa/stack.py` (undo/redo), `storage/serializer.py` (JSON save/load) |
-| **M4** | `dsa/stack.py`, `dsa/queue.py`, `dsa/linked_list.py` — **DONE (PR #6, merged)** |
+| **M4** | `dsa/stack.py`, `dsa/queue.py`, `dsa/linked_list.py`, `dsa/hash_table.py`, `dsa/heap.py` — **DONE (PR #6, merged)** |
 | **M5** | `algorithms/sorting.py` (bubble/insertion/merge/quick/heap sort), `algorithms/flood_fill.py` (4-connected paint bucket), `algorithms/graph_search.py` (BFS, DFS, A* — A* must use `dsa/heap`), path visualisation on canvas |
 
 **Acceptance:** terrain renders at multiple zoom levels; paint → undo →
@@ -64,7 +64,7 @@ that makes all three parts work as one application.
 
 | Milestone | Modules to create |
 |-----------|-------------------|
-| **M10** | `engine/clock.py` (day/night, weather, seasons — deterministic, seeded); wire cellular automata into the tick loop |
+| **M10** | `engine/clock.py` (day/night, weather, seasons — deterministic, seeded), `algorithms/cellular_automata.py` (fire spread, plant growth) — **DONE (PR #7, merged)** |
 | **M11** | `storage/database.py` (SQLite snapshots: save/load/delete/list/clear), `ai/q_learning.py` (optional tabular Q-learner on `dsa/hash_table`) |
 | **M12** | `docs/ARCHITECTURE.md`, `docs/DSA_MAPPING.md`, `docs/AI_EXPLANATION.md`, `docs/USER_GUIDE.md`, `docs/COMPLEXITY.md`; integration testing across all modules; demo scenarios; final polish |
 

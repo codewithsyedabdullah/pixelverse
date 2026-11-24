@@ -45,7 +45,30 @@ The academic focus is **DSA + AI**. The simulation is legitimately built on cust
 
 ## Custom Algorithms
 
-BFS, DFS, A* pathfinding, Flood Fill, Cellular Automata, Sorting, Binary Search.
+| Algorithm | File | Status |
+|---|---|---|
+| Cellular Automata (fire spread, plant growth) | `algorithms/cellular_automata.py` | ✅ Built |
+| Day/night, weather, seasons | `engine/clock.py` | ✅ Built |
+| BFS, DFS, A* pathfinding | `algorithms/graph_search.py` | ⬜ M5 |
+| Flood Fill | `algorithms/flood_fill.py` | ⬜ M5 |
+| Sorting (bubble/insertion/merge/quick/heap) | `algorithms/sorting.py` | ⬜ M5 |
+| Binary Search | — | ⬜ M5 |
+
+## Build status
+
+| Milestone | Status |
+|-----------|--------|
+| M1 — Foundation | ✅ |
+| M2 — World canvas | ✅ |
+| M3 — World editing | ⬜ |
+| M4 — DSA foundation | ✅ |
+| M5 — Pathfinding | ⬜ |
+| M6–M9 — Simulation, AI, analytics | ⬜ |
+| M10 — Environment | ✅ |
+| M11 — Persistence + Q-learning | ⬜ |
+| M12 — Final polish | ⬜ |
+
+See `TODO.md` for the full roadmap.
 
 ## Technology
 
