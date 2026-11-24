@@ -5,17 +5,14 @@ These tests use Qt's offscreen platform so they run headlessly in CI.
 
 from __future__ import annotations
 
+import os
+
+os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+
 import pytest
 
 from config import TerrainType
 from engine.world import World
-
-
-# Qt offscreen is set in the shell before running pytest; we also set it here
-# so the tests work when invoked directly from Python.
-import os
-
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 
 @pytest.fixture(scope="module")

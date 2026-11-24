@@ -21,7 +21,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from PySide6.QtCore import QRectF, Qt, Signal
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QBrush, QColor, QPainter, QPen
 from PySide6.QtWidgets import (
     QGraphicsRectItem,
@@ -102,7 +102,7 @@ class WorldCanvas(QGraphicsView):
 
         # --- pan state --------------------------------------------------------
         self._panning = False
-        self._pan_start = self._map_to_scene_pos = None
+        self._pan_start = None
 
         # Build the grid.
         self._build_grid()

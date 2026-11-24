@@ -184,7 +184,7 @@ class MainWindow(QMainWindow):
         self.status_label.setText(f"Cell ({x}, {y}) — {terrain}")
         self.statusBar().showMessage(f"Cell ({x}, {y}) — {terrain}")
 
-    # ------------------------------------------------------------------ helpers
+    # ------------------------------------------------------------------ public API
     def set_world_name(self, name: str) -> None:
         """Update the world name shown in the navigation bar."""
         self.world_name_label.setText(name)
